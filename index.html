@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blockchain Voting System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Blockchain Voting System</h1>
+    </header>
+    <main>
+        <h2>Candidates</h2>
+        <form action="{{ url_for('vote') }}" method="POST">
+            {% for candidate in candidates %}
+                <div>
+                    <input type="radio" id="candidate{{ candidate[0] }}" name="candidate" value="{{ candidate[0] }}">
+                    <label for="candidate{{ candidate[0] }}">{{ candidate[1] }} - Votes: {{ candidate[2] }}</label>
+                </div>
+            {% endfor %}
+            <button type="submit">Vote</button>
+        </form>
+    </main>
+</body>
+</html>
